@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<style>
+		.board {
+			display: flex;
+			width: 600px;
+			height: 600px;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+	}
+
+		.square {
+			height: 200px;
+			width: 200px;
+			box-sizing: border-box;
+			border: 5px solid black;
+			font-size: 10em;
+			display: flex;
+			justify-content: center;
+
+  }
+
+		.square:hover {
+    cursor: pointer;
+    background-color: #4CAF50;
+	}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="board">
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+			<div class="square"></div>
+		</div>
+
+		<script>
+		   var PLAYER_ONE = 'X'
+		   var PLAYER_TWO = 'O'
+			 var currentTurn = PLAYER_ONE
+
+			 var board = document.querySelector('.board')
+			 board.addEventListener('click', function(e) {
+				 e.target.innerHTML = currentTurn
+				 currentTurn = currentTurn === PLAYER_ONE ? PLAYER_TWO : PLAYER_ONE
+			 })
+		</script>
+
+	</body>
+</html>
