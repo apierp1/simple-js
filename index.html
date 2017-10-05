@@ -1,6 +1,7 @@
 <html>
-	<head>
-		<style>
+
+<head>
+	<style>
 		.board {
 			display: flex;
 			width: 600px;
@@ -8,7 +9,7 @@
 			flex-direction: row;
 			flex-wrap: wrap;
 			justify-content: flex-start;
-	}
+		}
 
 		.square {
 			height: 200px;
@@ -19,66 +20,75 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-  }
+		}
 
 		.square:hover {
-    cursor: pointer;
-    background-color: #4CAF50;
-	}
-		</style>
-	</head>
+			cursor: pointer;
+			background-color: #4CAF50;
+		}
+	</style>
+</head>
 
-	<body>
+<body>
 
-		<div class="board">
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-			<div class="square"></div>
-		</div>
+	<div class="board">
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+		<div class="square"></div>
+	</div>
 
-		<script>
-		   var PLAYER_ONE = 'X'
-		   var PLAYER_TWO = 'O'
-			 var currentTurn = PLAYER_ONE
+	<script>
+		var PLAYER_ONE = 'X'
+		var PLAYER_TWO = 'O'
+		var currentTurn = PLAYER_ONE
 
-			 var board = document.querySelector('.board')
-			 board.addEventListener('click', function(e) {
-				 e.target.innerHTML = currentTurn
-				 currentTurn = currentTurn === PLAYER_ONE ? PLAYER_TWO : PLAYER_ONE
-				 if(checkForWinner()) {
-					 alert("YOU WIN")
-				 }
-			 })
+		var board = document.querySelector('.board')
+		board.addEventListener('click', function(e) {
+			e.target.innerHTML = currentTurn
+			currentTurn = currentTurn === PLAYER_ONE ? PLAYER_TWO : PLAYER_ONE
+			if (checkForWinner()) {
+				alert("YOU WIN")
+			}
+		})
 
-			 function checkForWinner() {
-				 var squares = Array.prototype.slice.call(document.querySelectorAll('.square'))
-				 var symbols = squares.map(function(square) {
-					 return square.innerHTML
-				 })
+		function checkForWinner() {
+			var squares = Array.prototype.slice.call(document.querySelectorAll('.square'))
+			var symbols = squares.map(function(square) {
+				return square.innerHTML
+			})
 
-				//simple 2d array of winning combinations
-				var winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+			//simple 2d array of winning combinations
+			var winningCombos = [
+				[0, 1, 2],
+				[3, 4, 5],
+				[6, 7, 8],
+				[0, 3, 6],
+				[1, 4, 7],
+				[2, 5, 8],
+				[0, 4, 8],
+				[2, 4, 6]
+			];
 
-				//log each turn in the console for debug
-				console.log(symbols)
+			//log each turn in the console for debug
+			console.log(symbols)
 
-				return winningCombos.find(function(combo) {
-						if(symbols[combo[0]] == symbols[combo[1]] && symbols[combo[2]]) {
-							return symbols[combo[0]]
-						}
-						else {
-							return false;
-						}
-				})
+			return winningCombos.find(function(combo) {
+				if (symbols[combo[0]] == symbols[combo[1]] && symbols[combo[2]]) {
+					return symbols[combo[0]]
+				} else {
+					return false;
+				}
+			})
 
-			 }
-		</script>
+		}
+	</script>
 
-	</body>
+</body>
+
 </html>
