@@ -62,19 +62,12 @@
 					 return square.innerHTML
 				 })
 
-				var winningCombos = [
-				// Horizontals
-  		 	[0, 1, 2],
-  	    [3, 4, 5],
-        [6, 7, 8],
-  		  // Verticals
-  	    [0, 3, 6],
-  	    [1, 4, 7],
-  	    [2, 5, 8],
-  	    // Diagonals
-	      [0, 4, 8],
-  	    [2, 4, 6]];
+				//simple 2d array of winning combinations
+				var winningCombos = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+
+				//log each turn in the console for debug
 				console.log(symbols)
+
 				return winningCombos.find(function(combo) {
 						if(symbols[combo[0]] == symbols[combo[1]] && symbols[combo[2]]) {
 							return symbols[combo[0]]
